@@ -1,26 +1,19 @@
 import React from "react";
+import { format } from "date-fns";
 
-const Post = () => {
+const Post = ({ title, summary, cover, content, createdAt, author }) => {
   return (
     <div className="post">
       <div className="image">
-        <img
-          src="https://hinhanhdephd.com/wp-content/uploads/2019/05/hinh-anh-dep-lam-hinh-nen-dep-3.jpg"
-          alt=""
-        />
+        <img src={"http://localhost:4000/" + cover} alt="" />
       </div>
       <div className="texts">
-        <h2>Tạo dự án ReactJS với Webpack và Babel</h2>
+        <h2>{title}</h2>
         <p className="info">
-          <span className="author">CuongFullstack</span>
-          <time>2023-01-02 16:45</time>
+          <span className="author">{author.username}</span>
+          <time>{format(new Date(createdAt), "MMM d, yyyy HH:mm")}</time>
         </p>
-        <p className="summary">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum
-          eaque deserunt iusto nostrum ipsam molestiae veritatis consectetur
-          repellendus, similique impedit voluptatibus quam suscipit, rem sed,
-          accusamus laudantium at nam perspiciatis.
-        </p>
+        <p className="summary">{summary}</p>
       </div>
     </div>
   );
